@@ -26,4 +26,10 @@ var React  = require('react'),
 
 */
 
-module.exports = 2;
+module.exports = React.createClass({
+
+    render: function() {
+        return <div>Hello, world</div>;
+    }
+
+});
