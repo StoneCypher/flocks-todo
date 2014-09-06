@@ -17,7 +17,12 @@
     "flocks-todo"
   ],
   "devDependencies": {
-    "vows": "*"
+    "vows": "*",
+    "gulp": "*",
+    "gulp-clean": "*",
+    "gulp-sloc": "*",
+    "gulp-react": "*",
+    "gulp-yuidoc": "*"
   },
   "dependencies": {
     "flocks.js": "*"
