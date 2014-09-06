@@ -16,6 +16,9 @@
     "flock",
     "flocks-todo"
   ],
+  "devDependencies": {
+    "vows": "*"
+  },
   "dependencies": {
     "flocks.js": "*"
   },
