@@ -5,25 +5,27 @@
 
 global.errorMessage = '';
 
-var gulp   = require('gulp'),
-    clean  = require('gulp-clean'),
-    react  = require('gulp-react'),
-    yuidoc = require('gulp-yuidoc'),
-    path   = require('path'),
-    sloc   = require('gulp-sloc');
+var gulp      = require('gulp'),
+    clean     = require('gulp-clean'),
+    react     = require('gulp-react'),
+    yuidoc    = require('gulp-yuidoc'),
+    path      = require('path'),
+    strip_dom = require('gulp-strip-react-dom-comment'),
+    sloc      = require('gulp-sloc');
 
 gulp.task('clean', function() {
   return gulp.src(['./build','./dist'], {read: false}).pipe(clean());
 });
 
 gulp.task('react', ['clean'], function () {
-  return gulp.src('./assets/controls/*.jsx')
+  return gulp.src('./controls/*.jsx')
     .pipe(react())
     .pipe(gulp.dest('./build/react-js'));
 });
 
 gulp.task('yuidoc', ['react'], function() {
-  gulp.src("./assets/js/**/*.js")
+  gulp.src("./build/react-js/*.js")
+    .pipe(strip_dom())
     .pipe(yuidoc())
     .pipe(gulp.dest("./doc/js"));
 });

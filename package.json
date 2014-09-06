@@ -22,7 +22,8 @@
     "gulp-clean": "*",
     "gulp-sloc": "*",
     "gulp-react": "*",
-    "gulp-yuidoc": "*"
+    "gulp-yuidoc": "*",
+    "gulp-strip-react-dom-comment": "*"
   },
   "dependencies": {
     "flocks.js": "*"
