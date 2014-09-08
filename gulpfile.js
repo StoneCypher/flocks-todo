@@ -25,8 +25,12 @@ gulp.task('componentize', ['clean'], function () {
 });
 
 gulp.task('build', ['componentize'], function() {
-  gulp.src('src/js/app.js')
+  gulp.src('./build/react-js/flocks-todo.js')
     .pipe(browserify({ insertGlobals : true }))
+    .on('prebundle', function(bundle) {
+      bundle.external('flocks.js');
+      bundle.external('react');
+    })
     .pipe(gulp.dest('./build/js'));
 });
 
