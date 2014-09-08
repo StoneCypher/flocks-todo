@@ -43,7 +43,7 @@ var TempData = {
 var tdList = React.createClass({
 
     render: function() {
-        return <div>{JSON.stringify(this.props.data)}</div>;
+        return <div>{this.props.children}<hr>{JSON.stringify(this.props.data)}</div>;
     }
 
 });
@@ -55,3 +55,4 @@ module.exports = React.createClass({
     }
 
 });
+
