@@ -40,10 +40,18 @@ var TempData = {
 
 */
 
+var tdList = React.createClass({
+
+    render: function() {
+        return <div>{JSON.stringify(this.props.data)}</div>;
+    }
+
+});
+
 module.exports = React.createClass({
 
     render: function() {
-        return <div>Hello, world</div>;
+        return <tdList data={TempData}>Hello, world</tdList>;
     }
 
 });
