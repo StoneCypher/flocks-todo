@@ -1,0 +1,4 @@
+html, body, p, h1, h2, h3 { margin: 0; padding: 0; border: 0; }
+
+p.preinstall   { position: absolute; top: 5em; left: 5em; width: 30em; line-height: 1.35em; font-size: 200%; }
+.preinstall tt { font-weight: bold; color: #008; }

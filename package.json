@@ -20,6 +20,9 @@
     "vows": "*",
     "gulp": "*",
     "gulp-clean": "*",
+    "vinyl-source-stream": "^0.1.1",
+    "browserify": "^5.11.0",
+    "reactify": "^0.14.0",
     "gulp-browserify": "*",
     "gulp-sloc": "*",
     "gulp-react": "*",
@@ -27,6 +30,7 @@
     "gulp-strip-react-dom-comment": "*"
   },
   "dependencies": {
+    "react": "*",
     "flocks.js": "*"
   },
   "engines": {

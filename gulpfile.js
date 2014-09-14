@@ -5,35 +5,55 @@
 
 global.errorMessage = '';
 
-var gulp       = require('gulp'),
+var react      = require('react'),
+    gulp       = require('gulp'),
     clean      = require('gulp-clean'),
-    browserify = require('gulp-browserify'),
+    source     = require('vinyl-source-stream'),
+    browserify = require('browserify'),
     react      = require('gulp-react'),
     yuidoc     = require('gulp-yuidoc'),
     path       = require('path'),
     strip_dom  = require('gulp-strip-react-dom-comment'),
-    sloc       = require('gulp-sloc');
+    flocks     = require('flocks.js'),
+    sloc       = require('gulp-sloc'),
+
+    handleError = function(err) {
+        console.log(err.toString());
+        this.emit('end');
+    };
 
 gulp.task('clean', function() {
   return gulp.src(['./build','./dist'], {read: false}).pipe(clean());
 });
 
+gulp.task('build', function() {
+  return browserify({
+    entries:    './controls/flocks-todo.jsx',
+    extensions: ['.jsx']
+  })
+    .transform({es6: true}, 'reactify')
+    .bundle()
+    .on('error', handleError)
+    .pipe(source('bundle.js'))
+    .pipe(gulp.dest('./build/js'));
+});
+/*
 gulp.task('componentize', ['clean'], function () {
   return gulp.src('./controls/*.jsx')
     .pipe(react())
     .pipe(gulp.dest('./build/react-js'));
 });
 
-gulp.task('build', ['componentize'], function() {
+gulp.task('oldbuild', ['componentize'], function() {
   gulp.src('./build/react-js/flocks-todo.js')
-    .pipe(browserify({ insertGlobals : true }))
+    .pipe(browserify())
     .on('prebundle', function(bundle) {
       bundle.external('flocks.js');
       bundle.external('react');
     })
     .pipe(gulp.dest('./build/js'));
 });
-
+*/
 gulp.task('docs', ['build'], function() {
   gulp.src("./build/react-js/*.js")
     .pipe(strip_dom())
